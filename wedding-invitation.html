@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадебное приглашение - Дмитрий и Валерия</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --soft-cream: #F8F5F3;
+            --dusty-rose: #E8D5D3;
+            --meige: #D4C4B8;
+            --muted-brown: #D4C4B8;
+            --dark-text: #A8998A;
+            --white: #FFFFFF;
+            --accent-rose: #C9A9A6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, var(--dusty-rose) 100%);
+            min-height: 100vh;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(168, 153, 138, 0.15);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .hero-section {
+            background: url('img/d3e7e7ba-36fb-44fc-8c96-bc6f7964fd28.jpg') center/cover;
+            height: 300px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            background: rgba(248, 245, 243, 0.85);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .invitation-text {
+            font-size: 1.1rem;
+            color: var(--accent-rose);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .date-highlight {
+            background: var(--dusty-rose);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: inline-block;
+            color: var(--dark-text);
+        }
+
+        .content-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .event-details {
+            background: var(--soft-cream);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            color: var(--accent-rose);
+        }
+
+        .guests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .guest-item {
+            background: var(--soft-cream);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .guest-item:hover {
+            background: var(--dusty-rose);
+            transform: translateY(-2px);
+        }
+
+        .dress-code {
+            background: var(--dusty-rose);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dress-code h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .dress-code p {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .charity-section {
+            background: var(--meige);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .charity-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .final-message {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--accent-rose);
+            font-style: italic;
+            padding: 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .couple-names {
+                font-size: 2.5rem;
+            }
+
+            .hero-section {
+                height: 250px;
+            }
+
+            .content-section {
+                padding: 25px 20px;
+            }
+
+            .guests-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .detail-item {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .detail-icon {
+                margin: 0 0 10px 0;
+            }
+
+            .date-highlight {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .dress-code h3,
+            .charity-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .final-message {
+                font-size: 1.3rem;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .invitation-text {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                padding: 20px 15px;
+            }
+
+            .event-details,
+            .dress-code,
+            .charity-section {
+                padding: 20px 15px;
+            }
+
+            .guest-item {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Heart decoration */
+        .heart {
+            color: var(--accent-rose);
+            font-size: 1.2em;
+            margin: 0 10px;
+        }
+
+        /* Smooth animations */
+        .invitation-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="invitation-card">
+            <div class="hero-section">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="couple-names">Дмитрий <span class="heart">♥</span> Валерия</h1>
+                    <p class="invitation-text">Приглашаем Вас разделить с нами самый важный день</p>
+                    <div class="date-highlight">11 сентября 2025</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Детали торжества</h2>
+                
+                <div class="event-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">🕒</div>
+                        <div>
+                            <strong>Сбор гостей:</strong> 15:30<br>
+                            <strong>Начало церемонии:</strong> 16:00
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">📍</div>
+                        <div>
+                            <strong>Свадебная площадка "Воздух"</strong><br>
+                            село Высокое, 125
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Наши дорогие гости</h2>
+                
+                <div class="guests-grid">
+                    <div class="guest-item">Светлана Агапова</div>
+                    <div class="guest-item">Александр Агапов</div>
+                    <div class="guest-item">Андрей Тимофеев</div>
+                    <div class="guest-item">Ольга Тимофеева</div>
+                    <div class="guest-item">Роман Кирилин</div>
+                    <div class="guest-item">Екатерина Кирилина</div>
+                    <div class="guest-item">Ксения Кирилина</div>
+                    <div class="guest-item">Артем Кирилин</div>
+                    <div class="guest-item">Николай Морозов</div>
+                    <div class="guest-item">Михаил Морозов</div>
+                    <div class="guest-item">Кристина Маркова</div>
+                    <div class="guest-item">Михаил Русов</div>
+                    <div class="guest-item">Жанна Жимерина</div>
+                    <div class="guest-item">Наталья Барышникова</div>
+                    <div class="guest-item">Надежда Новикова</div>
+                    <div class="guest-item">Сергей Новиков</div>
+                    <div class="guest-item">Татьяна Тимофеева</div>
+                    <div class="guest-item">Анастасия Чегодайкина</div>
+                    <div class="guest-item">Наталья Савина</div>
+                    <div class="guest-item">Сергей Савин</div>
+                    <div class="guest-item">Ирина Лихонина</div>
+                    <div class="guest-item">Игорь Лихонин</div>
+                    <div class="guest-item">Егор Тарасов</div>
+                    <div class="guest-item">Софья Тарасова</div>
+                    <div class="guest-item">Егор Тупицын</div>
+                    <div class="guest-item">Ева Рождественская</div>
+                    <div class="guest-item">Леонид Гончаренко</div>
+                    <div class="guest-item">Лилия Гончаренко</div>
+                    <div class="guest-item">Даниил Зиборов</div>
+                    <div class="guest-item">Алевтина Шиянова</div>
+                    <div class="guest-item">Максим Симонов</div>
+                    <div class="guest-item">Анастасия Захарова</div>
+                    <div class="guest-item">Сергей Захаров</div>
+                    <div class="guest-item">Татьяна Скворцова</div>
+                    <div class="guest-item">Егор Стаханов</div>
+                    <div class="guest-item">Оксана Матюшкина</div>
+                    <div class="guest-item">Лидия Никулина</div>
+                    <div class="guest-item">Никита Никулин</div>
+                </div>
+
+                <div class="dress-code">
+                    <h3>Дресс-код</h3>
+                    <p>Просим быть в удобной одежде. По желанию можно обувь без каблука.</p>
+                    <p><strong>Просим обойтись без черных и белых цветов в одежде.</strong></p>
+                </div>
+
+                <div class="charity-section">
+                    <h3>Вместо цветов</h3>
+                    <p>Просим вместо цветов принести корм для бездомных животных.</p>
+                    <p>Мы передадим его в приют для животных <strong>"Любимец"</strong>.</p>
+                </div>
+
+                <div class="final-message">
+                    Мы будем рады разделить с Вами этот особенно важный для нас день
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
